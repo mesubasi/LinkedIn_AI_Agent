@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 mail = os.getenv("LINKEDIN_EMAIL")
 password = os.getenv("LINKEDIN_PASSWORD")
-path = os.getenv("CHROME_DRIVER_PATH")
+path = os.getenv("BROWSER_DRIVER_PATH")
 
 browser = Browser(
     config=BrowserConfig(
