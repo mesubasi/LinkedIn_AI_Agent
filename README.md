@@ -1,8 +1,8 @@
-# LinkedIn AI Agent 🤖
+# LinkedIn AI Agent
 
 LinkedIn AI Job Application Agent, LinkedIn platformunda otomatik olarak yazılım geliştirici ilanlarına başvurmanıza yardımcı olan bir yapay zeka aracıdır. Bu proje, iş arayan geliştiricilerin LinkedIn'deki "Kolay Başvuru" (“Easy Apply”) iş ilanlarına otomatik olarak başvurmalarını sağlamak amacıyla geliştirilmiştir.
 
-## Özellikler 🚀
+## 🚀 Özellikler
 
 - İş İlanlarını Tarama: "Software Developer" ilanlarını bulur ve iş ilanı detaylarını analiz eder.
 - CV Uygunluk Analizi: İlan şartlarını PDF formatındaki CV ile karşılaştırarak uygun (✔️) veya uygunsuz (❌) olduğuna karar verir.
@@ -10,12 +10,12 @@ LinkedIn AI Job Application Agent, LinkedIn platformunda otomatik olarak yazıl�
 - Tam Otomatik Başvuru: "Next" butonuna tıklayarak formu ilerletir ve "Submit Application" görünüyorsa başvuruyu tamamlar.
 - Dış Bağlantı Kontrolü: Eğer başvuru harici bir siteye yönlendiriliyorsa, işlemi iptal eder ve bir sonraki ilana geçer.
 
-## Gereksinimler 🔧
+## 🔧 Gereksinimler
 
 - Python >=3.11
 - PIP
 
-## Kurulum 🛠️
+## 🛠️ Kurulum
 
 Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 
@@ -44,23 +44,28 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
    python linkedin_ai_agent.py
    ```
 
-## Kullanılan Teknolojiler 📚
+## 📚 Kullanılan Teknolojiler
 
 - PyPDF2
 - Browser-use
 - Playwright
 - OpenAI
 
-## Kullanım 💡
+## 🔑 Önemli Komutlar
 
-1. Program LinkedIn'e giriş yapar.
+- `bash pip install -r requirements.txt`: Bağımlılıkları yükler
+- `bash python linkedin_ai_agent.py`: Agent'i başlatır
+
+## 💡 Kullanım
+
+1. Uygulama başlatıldıktan sonra LinkedIn'e giriş yapar.
 2. Belirtilen kriterlere uygun iş ilanlarını arar.
 3. CV'ye uygun ilanları işaretleyerek uygun olanlara otomatik başvurur.
 4. "Easy Apply" sürecini tamamlar ve başvuruları gönderir.
 5. Harici sitelere yönlendiren iş ilanlarını es geçer.
 6. Başvurular tamamlandıktan sonra tarayıcıyı kapatmak için kullanıcı onayı bekler.
 
-## Hata Giderme ⚙
+## ⚙ Hata Giderme
 
 Problem: Uygulama başlatılamıyor
 
@@ -76,7 +81,7 @@ pip uninstall -r requirements.txt -y
 pip install -r requirements.txt
 ```
 
-## Notlar 📝
+## 📝 Notlar
 
 - Python 3.12.8 sürümü ile test edilmiştir
 - Daha eski veya yeni sürümlerde sorunlar yaşanabilir
