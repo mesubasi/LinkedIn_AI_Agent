@@ -2,9 +2,8 @@
 
 LinkedIn AI Job Application Agent, LinkedIn platformunda otomatik olarak yazılım geliştirici ilanlarına başvurmanıza yardımcı olan bir yapay zeka aracıdır. Bu proje, iş arayan geliştiricilerin LinkedIn'deki "Kolay Başvuru" (“Easy Apply”) iş ilanlarına otomatik olarak başvurmalarını sağlamak amacıyla geliştirilmiştir.
 
-## Özellikler 🌟
+## Özellikler 🚀
 
-- Otomatik LinkedIn Girişi: Kullanıcının e-posta ve şifresi ile otomatik LinkedIn oturumu açar.
 - İş İlanlarını Tarama: "Software Developer" ilanlarını bulur ve iş ilanı detaylarını analiz eder.
 - CV Uygunluk Analizi: İlan şartlarını PDF formatındaki CV ile karşılaştırarak uygun (✔️) veya uygunsuz (❌) olduğuna karar verir.
 - Akıllı Başvuru Sistemi: İlgili iş ilanının başvuru formunu ilan detaylarına uygun şekilde doldurur.
@@ -15,13 +14,6 @@ LinkedIn AI Job Application Agent, LinkedIn platformunda otomatik olarak yazıl�
 
 - Python >=3.11
 - PIP
-
-## Kullanılan Teknolojiler 📚
-
-- PyPDF2
-- Browser-use
-- Playwright
-- OpenAI
 
 ## Kurulum 🛠️
 
@@ -35,16 +27,13 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 2. **Gerekli Paketleri Yükleyin**:
 
    ```bash
-   pip install browser-use
-   playwright install
+   pip install -r requirements.txt
    ```
 
 3. **.env Dosyasını Oluşturun**:
 
    ```bash
    OPENAI_API_KEY=sk-fakeAPIKey1234567890xyz
-   LINKEDIN_EMAIL=yourlinkedinmail@mail.com
-   LINKEDIN_PASSWORD=password
    BROWSER_DRIVER_PATH=C:\Program Files\Google\Chrome\Application\chrome.exe
    CV_PATH=C:\Users\test\Desktop\cv.pdf
    ```
@@ -55,14 +44,37 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
    python linkedin_ai_agent.py
    ```
 
+## Kullanılan Teknolojiler 📚
+
+- PyPDF2
+- Browser-use
+- Playwright
+- OpenAI
+
 ## Kullanım 💡
 
-1. Program LinkedIn'e girip oturum açar.
+1. Program LinkedIn'e giriş yapar.
 2. Belirtilen kriterlere uygun iş ilanlarını arar.
 3. CV'ye uygun ilanları işaretleyerek uygun olanlara otomatik başvurur.
 4. "Easy Apply" sürecini tamamlar ve başvuruları gönderir.
 5. Harici sitelere yönlendiren iş ilanlarını es geçer.
 6. Başvurular tamamlandıktan sonra tarayıcıyı kapatmak için kullanıcı onayı bekler.
+
+## Hata Giderme ⚙
+
+Problem: Uygulama başlatılamıyor
+
+```bash
+# Python sürümünüzü kontrol edin
+python --version
+
+# PIP sürümnüzü kontrol edin
+pip --version
+
+# Bağımlılıkları temizleyip yeniden yükleyin
+pip uninstall -r requirements.txt -y
+pip install -r requirements.txt
+```
 
 ## Notlar 📝
 
