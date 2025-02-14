@@ -11,12 +11,12 @@ LinkedIn AI Job Application Agent, LinkedIn platformunda otomatik olarak yazıl�
 - Tam Otomatik Başvuru: "Next" butonuna tıklayarak formu ilerletir ve "Submit Application" görünüyorsa başvuruyu tamamlar.
 - Dış Bağlantı Kontrolü: Eğer başvuru harici bir siteye yönlendiriliyorsa, işlemi iptal eder ve bir sonraki ilana geçer.
 
-## Gereksinimler 🛠️
+## Gereksinimler 🔧
 
 - Python >=3.11
 - PIP
 
-## Kullanılan Teknolojiler
+## Kullanılan Teknolojiler 📚
 
 - PyPDF2
 - Browser-use
@@ -37,6 +37,21 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
    ```bash
    pip install browser-use
    playwright install
+   ```
+
+3. **.env Dosyasını Oluşturun**:
+
+   ```bash
+   OPENAI_API_KEY=
+   LINKEDIN_EMAIL=yourlinkedinmail@mail.com
+   LINKEDIN_PASSWORD=password
+   BROWSER_DRIVER_PATH=C:\\Yol\\To\\Browser.exe
+   ```
+
+4. **Agent'i Çalıştırın**:
+
+   ```bash
+   python linkedin_ai_agent.py
    ```
 
 ## Kullanım 💡
