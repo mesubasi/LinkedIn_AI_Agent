@@ -42,10 +42,11 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 3. **.env Dosyasını Oluşturun**:
 
    ```bash
-   OPENAI_API_KEY=
+   OPENAI_API_KEY=sk-fakeAPIKey1234567890xyz
    LINKEDIN_EMAIL=yourlinkedinmail@mail.com
    LINKEDIN_PASSWORD=password
-   BROWSER_DRIVER_PATH=C:\\Yol\\To\\Browser.exe
+   BROWSER_DRIVER_PATH=C:\Program Files\Google\Chrome\Application\chrome.exe
+   CV_PATH=C:\Users\test\Desktop\cv.pdf
    ```
 
 4. **Agent'i Çalıştırın**:
@@ -56,12 +57,12 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 
 ## Kullanım 💡
 
-Program LinkedIn'e girip oturum açar.
-Belirtilen kriterlere uygun iş ilanlarını arar.
-CV'ye uygun ilanları işaretleyerek uygun olanlara otomatik başvurur.
-"Easy Apply" sürecini tamamlar ve başvuruları gönderir.
-Harici sitelere yönlendiren iş ilanlarını es geçer.
-Başvurular tamamlandıktan sonra tarayıcıyı kapatmak için kullanıcı onay bekler.
+1. Program LinkedIn'e girip oturum açar.
+2. Belirtilen kriterlere uygun iş ilanlarını arar.
+3. CV'ye uygun ilanları işaretleyerek uygun olanlara otomatik başvurur.
+4. "Easy Apply" sürecini tamamlar ve başvuruları gönderir.
+5. Harici sitelere yönlendiren iş ilanlarını es geçer.
+6. Başvurular tamamlandıktan sonra tarayıcıyı kapatmak için kullanıcı onayı bekler.
 
 ## Notlar 📝
 
