@@ -16,6 +16,10 @@ browser = Browser(
     )
 )
 
+initial_actions = [
+	{'open_tab': {'url': 'https://www.linkedin.com/feed/'}},
+]
+
 async def main():
     agent = Agent(
         task=f"Go to LinkedIn. If the account is not open, scroll down to 'Sign in'. Log in with email: {mail} and password: {password}. "
@@ -25,6 +29,7 @@ async def main():
              "However, if clicking the apply button redirects to an external website, do not proceed with the application. Instead, move to the next job posting in the list.",
         llm=ChatOpenAI(model="gpt-4o"),
         browser=browser,
+        initial_actions=initial_actions,
     )
     result = await agent.run()
 
