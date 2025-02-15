@@ -1,2 +1,5 @@
 # Virtual environment (venv) files
 .env
+
+# logs
+logs
