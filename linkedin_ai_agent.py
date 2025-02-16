@@ -26,13 +26,21 @@ initial_actions = [
 
 async def main():
     agent = Agent(
-        task=f"""Go to LinkedIn.Once logged in, go to the ‘İş ilanları’ tab. Search for ‘Software Developer’ job postings in Istanbul.
-                 On the left panel, go through the job postings one by one. Click on each job listing to review the details.
-                 Analyze the job description and compare it with the provided CV: {text}. If the job requirements closely match the CV, mark it as ‘✅’ and proceed with the application. If the job does not align with the CV, mark it as ‘❌’ and skip to the next job posting.
-                 If a job is marked as ‘✅’, click on the ‘Kolay Başvuru’ button and proceed with the application. Answer any required questions based on the job listing, including multiple-choice dropdowns, short answers, and yes/no questions.
-                 Always click ‘Next’ to continue the application process until the final step. If a ‘Submit Application’ button appears at the end, click it to finalize the application.
-                 If the application is successfully submitted, move on to the next job listing and repeat the same steps. However, if clicking the apply button redirects to an external website, do not proceed with the application. Instead, move to the next job posting in the list.""",
-        llm=ChatOpenAI(model="gpt-4o"),
+       task=(
+           "Continuously search and apply for job postings on LinkedIn until stopped by the user. "
+           "1. Go to LinkedIn and log in. "
+           "2. Navigate to the ‘İş ilanları’ tab and search for ‘Software Developer’ positions in Istanbul. "
+           "3. Scan the job postings and click on each listing to review its details. "
+           "4. Extract the job summary and compare it with the CV content: {text}. "
+           "5. If the job description matches the CV, proceed with the application; otherwise, skip to the next job. "
+           "6. If the job is marked as ‘Kolay Başvuru’ and aligns with the CV, apply immediately. "
+           "7. Select the appropriate salary expectation based on job seniority (e.g., Junior positions should have a lower salary range). "
+           "8. Answer application questions automatically, including multiple-choice, short answers, and yes/no questions. "
+           "9. Click ‘İleri’ at each step and finalize the application if a ‘Submit Application’ button appears. "
+           "10. If an application requires an external website, skip it and move to the next listing. "
+           "11. Repeat this process until the user provides a stop signal."
+       ),
+        llm=ChatOpenAI(model='gpt-4o'),
         browser=browser,
         initial_actions=initial_actions,
         save_conversation_path="logs/conversation"
