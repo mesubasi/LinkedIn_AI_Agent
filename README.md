@@ -46,10 +46,10 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 
 ## 📚 Kullanılan Teknolojiler
 
-- PyPDF2
+- pdfplumber
 - Browser-use
 - Playwright
-- OpenAI
+- OpenAI - Langchain
 
 ## 🔑 Önemli Komutlar
 
