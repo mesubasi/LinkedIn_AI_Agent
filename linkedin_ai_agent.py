@@ -1,4 +1,4 @@
-from PyPDF2 import PdfReader
+import pdfplumber
 from langchain_openai import ChatOpenAI
 from browser_use import Agent, Browser, BrowserConfig
 import asyncio
@@ -10,9 +10,15 @@ load_dotenv()
 path = os.getenv("BROWSER_DRIVER_PATH")
 cv = os.getenv("CV_PATH")
 
-reader = PdfReader(cv)
-number_of_pages = len(reader.pages)
-text = ''.join([reader.pages[i].extract_text() for i in range(number_of_pages)])
+
+def extract_pdf_text(file_path):
+    with pdfplumber.open(file_path) as pdf:
+        text = "\n".join([page.extract_text() or "" for page in pdf.pages])
+    return text.strip()
+
+
+cv_text = extract_pdf_text(cv)
+print(cv_text)
 
 browser = Browser(
     config=BrowserConfig(
@@ -21,35 +27,43 @@ browser = Browser(
 )
 
 initial_actions = [
-	{'open_tab': {'url': 'https://www.linkedin.com/feed/'}},
+    {"open_tab": {"url": "https://www.linkedin.com/feed/"}},
 ]
 
-async def main():
-    agent = Agent(
-       task=(
-           "Continuously search and apply for job postings on LinkedIn until stopped by the user. "
-           "1. Go to LinkedIn and log in. "
-           "2. Navigate to the ‘İş ilanları’ tab and search for ‘Software Developer’ positions in Istanbul. "
-           "3. Scan the job postings and click on each listing to review its details. "
-           "4. Extract the job summary and compare it with the CV content: {text}. "
-           "5. If the job description matches the CV, proceed with the application; otherwise, skip to the next job. "
-           "6. If the job is marked as ‘Kolay Başvuru’ and aligns with the CV, apply immediately. "
-           "7. Select the appropriate salary expectation based on job seniority (e.g., Junior positions should have a lower salary range). "
-           "8. Answer application questions automatically, including multiple-choice, short answers, and yes/no questions. "
-           "9. Click ‘İleri’ at each step and finalize the application if a ‘Submit Application’ button appears. "
-           "10. If an application requires an external website, skip it and move to the next listing. "
-           "11. Repeat this process until the user provides a stop signal."
-       ),
-        llm=ChatOpenAI(model='gpt-4o'),
-        browser=browser,
-        initial_actions=initial_actions,
-        save_conversation_path="logs/conversation"
-    )
 
-    result = await agent.run(max_steps=1000)
-    input('Press Enter to close the browser...')
-    await browser.close()
-    print(result)
-    
-if __name__ == '__main__':
+async def main():
+    try:
+        agent = Agent(
+            task=(
+                f"""Search and apply for jobs on LinkedIn continuously until the user stops. The steps should be as follows:
+                1. Log in to LinkedIn. Verify that you are logged in with username and password.
+                2. On the home page or in the navigation bar, find the 'İş İlanları' tab and click on it.
+                3. Search for 'Yazılım Geliştirici' jobs in Istanbul, Türkiye and press the "Arama Yap" button.
+                4. Study each advertisement by reading the titles and short descriptions.
+                5. Read the description of the advertisement and compare it with the content of the CV. CV: {cv_text}
+                If the requirements of the advertisement match the skills and experience on your CV, apply.
+                6. Skip listings where the "Uygula" button appears.
+                7. If the advertisement offers an 'Kolay Başvuru' option and matches your CV, apply immediately.
+                8. Choose the appropriate salary range according to the level of the position (e.g. lower salary range for Junior positions).
+                9. Answer the application questions automatically: multiple choice, short answer and yes/no questions as appropriate.
+                10. Find and click the 'Next' button at each step. Then find and click on the 'Review' button. If the 'Submit Application' button appears, complete the application. If it says “Application submitted”, click the “Done” button.
+                11. Work for 1 time.
+                """
+            ),
+            llm=ChatOpenAI(model="gpt-4o"),
+            browser=browser,
+            initial_actions=initial_actions,
+            save_conversation_path="logs/conversation",
+        )
+
+        result = await agent.run(max_steps=500)
+        print(result)
+    except Exception as e:
+        print(f"Hata oluştu: {e}")
+    finally:
+        input("Press Enter to close the browser...")
+        await browser.close()
+
+
+if __name__ == "__main__":
     asyncio.run(main())
