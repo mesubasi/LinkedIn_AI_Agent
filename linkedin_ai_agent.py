@@ -46,7 +46,7 @@ async def main():
                 7. If the advertisement offers an 'Kolay Başvuru' option and matches your CV, apply immediately.
                 8. Choose the appropriate salary range according to the level of the position (e.g. lower salary range for Junior positions).
                 9. Answer the application questions automatically: multiple choice, short answer and yes/no questions as appropriate.
-                10. Find and click the 'Next' button at each step. Then find and click on the 'Review' button. If the 'Submit Application' button appears, complete the application. If it says “Application submitted”, click the “Done” button.
+                10. Find and click the 'Next' button at each step. Then find and click on the 'İncele' button. If the 'Başvuruyu Gönder' button appears, complete the application. If it says “Application submitted”, click the “Bitti” button or "X" button to close the window.
                 11. Work for 1 time.
                 """
             ),
